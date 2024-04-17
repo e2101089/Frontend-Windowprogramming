@@ -10,10 +10,10 @@
     <Grid>
         <lvc:CartesianChart Series="{Binding Series}">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Month" Labels="{Binding DaysOfWeek}"></lvc:Axis>
+                <lvc:Axis Title="Month" Labels="{Binding Month}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Money spent" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                <lvc:Axis Title="Money spent" LabelFormatter="{Binding TotalSpending}"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
 
