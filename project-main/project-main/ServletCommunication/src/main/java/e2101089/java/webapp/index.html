@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timetable</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<h2>Timetable</h2>
+  <form action="Timetable" method="post">
+<table id="timetable">
+    <thead>
+        <tr>
+            <th>Week</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Week 1</td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+        </tr>
+        <tr>
+            <td>Week 2</td>
+               <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+           <td><input name="name" type="name" /></td>
+        </tr>
+        
+        <!-- Add more rows for additional weeks -->
+    </tbody>
+    
+</table>
+ <tr>
+            <td colspan="8" class="center">
+                <input type="submit" value="Submit"/>
+            </td>
+        </tr>
+</body>
+</html>
