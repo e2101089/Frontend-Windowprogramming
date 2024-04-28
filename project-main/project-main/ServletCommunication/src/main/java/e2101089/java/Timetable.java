@@ -21,9 +21,7 @@ public class Timetable extends HttpServlet {
     public void init() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mariadb://mariadb.vamk.fi/e2101089_tweet", "e2101089", "ZE7ht8ncXaN");
-            String sql = "INSERT INTO timetable (week, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            ps = conn.prepareStatement(sql);
+            conn = DriverManager.getConnection("jdbc:mariadb://mariadb.vamk.fi/e2101089_tweet", "e2101089", "hgMbbeTWqVC");
             System.out.println(conn);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -42,11 +40,20 @@ public class Timetable extends HttpServlet {
 
         // Save the timetable data to the database
         try {
+            String sql = "INSERT INTO timetable (week, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            ps = conn.prepareStatement(sql);
+
             // Loop through the timetable array and set parameters for the prepared statement
             for (int week = 0; week < 2; week++) {
-                for (int day = 0; day < 7; day++) {
-                    ps.setString(day + 2, timetable[week][day]); // day + 2 because week starts at index 0 and SQL column indexes start at 1
-                }
+                ps.setInt(1, week + 1); // Set the week number
+                ps.setString(2, timetable[week][0]); // Monday
+                ps.setString(3, timetable[week][1]); // Tuesday
+                ps.setString(4, timetable[week][2]); // Wednesday
+                ps.setString(5, timetable[week][3]); // Thursday
+                ps.setString(6, timetable[week][4]); // Friday
+                ps.setString(7, timetable[week][5]); // Saturday
+                ps.setString(8, timetable[week][6]); // Sunday
+
                 // Execute the INSERT statement
                 ps.executeUpdate();
             }
