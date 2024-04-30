@@ -1,3 +1,4 @@
+
 package e2101089.java;
 
 import jakarta.servlet.ServletException;
@@ -21,7 +22,7 @@ public class Timetable extends HttpServlet {
     public void init() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mariadb://mariadb.vamk.fi/e2101089_tweet", "e2101089", "hgMbbeTWqVC");
+            conn = DriverManager.getConnection("jdbc:mariadb://mariadb.vamk.fi/e2101089_tweet", "e2101089", "xe6F9JEXT5j");
             System.out.println(conn);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -29,6 +30,14 @@ public class Timetable extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Initialize the database connection
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mariadb://mariadb.vamk.fi/e2101089_tweet", "e2101089", "Jx3VZTJuqjFC");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         // Retrieve data from the form
         String[][] timetable = new String[2][7]; // Adjust the dimensions based on your table size
         for (int week = 0; week < 2; week++) {
@@ -61,11 +70,7 @@ public class Timetable extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect("index.html");
-    }
-
-    @Override
-    public void destroy() {
+        // Close the resources and redirect
         try {
             if (ps != null) {
                 ps.close();
@@ -76,5 +81,7 @@ public class Timetable extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        response.sendRedirect("index.html");
     }
 }
