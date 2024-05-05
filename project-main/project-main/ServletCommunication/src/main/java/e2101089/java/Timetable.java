@@ -69,18 +69,7 @@ public class Timetable extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        // Close the resources and redirect
-        try {
-            if (ps != null) {
-                ps.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+       
 
         response.sendRedirect("index.html");
     }

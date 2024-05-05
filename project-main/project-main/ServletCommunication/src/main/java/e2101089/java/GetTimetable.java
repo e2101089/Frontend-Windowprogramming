@@ -70,19 +70,18 @@ public class GetTimetable extends HttpServlet {
 
             // Process the result set
             PrintWriter out = response.getWriter();
-            out.println("<table style=\"width: 80%; margin: 20px auto; border-collapse: collapse; border: 2px solid #4CAF50; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\">");
-            out.println("<tr><th style=\"padding: 10px; border-bottom: 2px solid #4CAF50;\">Week</th><th style=\"padding: 10px; border-bottom: 2px solid #4CAF50;\">" + day.substring(0, 1).toUpperCase() + day.substring(1) + "</th></tr>");
+            out.println("<table style=\"width: 100%; border-collapse: collapse;\">");
+            out.println("<tr><th style=\"padding: 8px; border: 1px solid black; background-color: #f2f2f2;\">Week</th>");
+            out.println("<th style=\"padding: 8px; border: 1px solid black; background-color: #f2f2f2;\">" + day.substring(0, 1).toUpperCase() + day.substring(1) + "</th></tr>");
 
             for (int week : timetable.keySet()) {
-                out.println("<tr><td style=\"padding: 10px; border-bottom: 2px solid #4CAF50;\">" + week + "</td>");
-                out.println("<td style=\"padding: 10px; border-bottom: 2px solid #4CAF50;\">");
+                out.println("<tr><td style=\"padding: 8px; border: 1px solid black;\">Week " + week + "</td>");
+                out.println("<td style=\"padding: 8px; border: 1px solid black;\">");
                 for (String s : timetable.get(week)) {
                     out.println(s + "</br>");
                 }
                 out.println("</td></tr>");
-
             }
-
             out.println("</table>");
         } catch (SQLException e) {
             e.printStackTrace();
